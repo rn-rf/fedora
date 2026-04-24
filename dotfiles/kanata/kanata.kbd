@@ -1,0 +1,79 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  rapid-event-delay 5
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+
+  ;; exception groups
+  l-except (e r t y u i p a s d f g ; c v b n m)
+  s-except (e r t y u i o p a h j k l c v b n m)
+)
+
+(defsrc
+  q w e r t y u i o p
+  a s d f g h j k l ;
+  z x c v b n m , . /
+  caps
+)
+
+(defalias
+  ;; HRM layer triggers
+  s-hrm (tap-hold-except-keys $tap-time $hold-time s (layer-while-held hrm) $s-except)
+  l-hrm (tap-hold-except-keys $tap-time $hold-time l (layer-while-held hrm) $l-except)
+
+  ;; LEFT MODS
+  d-ctrl (tap-hold $tap-time $hold-time d lctrl)
+  f-super (tap-hold $tap-time $hold-time f lmet)
+  g-alt (tap-hold $tap-time $hold-time g ralt)
+  semi-shift (tap-hold $tap-time $hold-time ; lshift)
+
+  ;; RIGHT MODS
+  h-alt (tap-hold $tap-time $hold-time h lalt)
+  j-super (tap-hold $tap-time $hold-time j rmet)
+  k-ctrl (tap-hold $tap-time $hold-time k rctrl)
+  a-shift (tap-hold $tap-time $hold-time a rshift)
+
+  ;; SYMBOL LAYER
+  caps-sym (tap-hold $tap-time $hold-time caps (layer-while-held sym))
+  semi-sym (tap-hold $tap-time $hold-time ; (layer-while-held sym))
+)
+
+(defchordsv2
+  (k l) bspc 20 first-release ()
+  (, .) C-bspc 20 first-release ()
+  (s d) esc  20 first-release ()
+  (x c) del  20 first-release ()
+)
+
+(deflayer base
+  q w e r t y u i o p
+  a @s-hrm d f g h j k @l-hrm @semi-sym
+  z x c v b n m , . /
+  @caps-sym
+)
+
+(deflayer hrm
+  q w e r t y u i o p
+  a s @d-ctrl @f-super @g-alt @h-alt @j-super @k-ctrl l @semi-shift
+  z x c v b n m , . /
+  caps
+)
+
+(deflayer sym
+  S-` S-[ [ S-9 S-' ' S-0 ] S-] S--
+  1 S-= - S-8 = left down up right 0
+  S-1 S-2 S-3 S-4 S-5 S-6 S-7 ` S-\ \
+  caps
+)
+
+;; FOR UNDERSTANDING PURPOSE
+;;   (deflayer sym
+;;    ! ( [ { '     " } ] ) _
+;;    1 + - * =     left down up right 0
+;;    ` ~ @ # $     % ^ & | \
+;;   )
+

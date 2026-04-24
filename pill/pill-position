@@ -1,0 +1,21 @@
+#!/bin/bash
+
+STATE_FILE="/tmp/mako_pos"
+
+# Force kill ALL mako instances
+pkill -x mako 2>/dev/null
+
+# Wait until it's actually dead
+while pgrep -x mako >/dev/null; do
+    sleep 0.1
+done
+
+if [ -f "$STATE_FILE" ]; then
+    mako --config "$HOME/.config/mako/config" &
+    rm "$STATE_FILE"
+else
+    mako --config "$HOME/.config/mako/config-top" &
+    touch "$STATE_FILE"
+fi
+
+pill

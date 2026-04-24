@@ -1,0 +1,24 @@
+# Default (normal)
+anchor=top-right
+font=JetBrainsMono 11
+padding=12
+margin=10
+border-size=1
+border-radius=10
+background-color=#1e1e2edd
+text-color=#cdd6f4
+border-color=#89b4fa
+max-visible=5
+default-timeout=5000
+
+[app-name=statusbar]
+anchor=bottom-right
+background-color=#313131dd
+text-color=#ffffff
+layer=overlay
+border-size=9
+border-color=#ffffff00
+border-radius=14
+padding=2,8
+font=monospace 9
+default-timeout=0

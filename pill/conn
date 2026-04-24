@@ -1,0 +1,39 @@
+#!/bin/bash
+
+WIFI_ICON="󰖩"
+WIFI_OFF_ICON="󰖪"
+BT_ICON="󰂯"
+BT_OFF_ICON="󰂲"
+BT_BAT_ICON="󰥉"
+
+# --- WIFI ---
+WIFI_NAME=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
+
+if [[ -n "$WIFI_NAME" ]]; then
+    WIFI="$WIFI_ICON $WIFI_NAME"
+else
+    WIFI="$WIFI_OFF_ICON WiFi Off"
+fi
+
+# --- BLUETOOTH ---
+BT_POWER=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
+
+if [[ "$BT_POWER" == "yes" ]]; then
+    DEVICE=$(bluetoothctl devices Connected | head -n1 | awk '{print $2}')
+    if [[ -n "$DEVICE" ]]; then
+        NAME=$(bluetoothctl info "$DEVICE" | grep "Name" | cut -d' ' -f2-)
+        BATTERY=$(bluetoothctl info "$DEVICE" | awk -F'[()]' '/Battery Percentage/ {print $2}')
+
+        if [[ -n "$BATTERY" ]]; then
+            BT="$BT_ICON $NAME ${BATTERY}%"
+        else
+            BT="$BT_ICON $NAME"
+        fi
+    else
+        BT="$BT_ICON On"
+    fi
+else
+    BT="$BT_OFF_ICON Off"
+fi
+
+spril "$WIFI $BT"

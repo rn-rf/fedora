@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Volume
+VOL=$(pamixer --get-volume 2>/dev/null)
+
+# Brightness
+BRIGHT=$(brightnessctl g)
+MAX=$(brightnessctl m)
+BRIGHT_PCT=$((BRIGHT * 100 / MAX))
+
+# Safe bar generator
+make_bar() {
+    local VAL=$1
+    local FILLED=$((VAL / 10))
+    local EMPTY=$((10 - FILLED))
+
+    BAR=""
+    for ((i=0; i<FILLED; i++)); do BAR="${BAR}█"; done
+    for ((i=0; i<EMPTY; i++)); do BAR="${BAR}░"; done
+
+    echo "$BAR"
+}
+
+VOL_BAR=$(make_bar $VOL)
+BRIGHT_BAR=$(make_bar $BRIGHT_PCT)
+
+TEXT="  $VOL_BAR    •    󰃠  $BRIGHT_BAR"
+
+notify-send -a statusbar -r 999 -h string:x-canonical-private-synchronous:statusbar "$TEXT"
+debounce 2

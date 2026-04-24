@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Nerd Font icons
+PLAY_ICON="󰏤"
+PAUSE_ICON="󰐊"
+
+# Get player status
+STATUS=$(playerctl status 2>/dev/null)
+
+# Exit if nothing playing
+if [[ -z "$STATUS" ]]; then
+    exit 0
+fi
+
+# Get metadata
+TITLE=$(playerctl metadata title 2>/dev/null)
+ARTIST=$(playerctl metadata artist 2>/dev/null)
+
+# Trim long text (clean pill look)
+TITLE=$(echo "$TITLE" | cut -c1-40)
+ARTIST=$(echo "$ARTIST" | cut -c1-30)
+
+# Choose icon
+if [[ "$STATUS" == "Playing" ]]; then
+    ICON="$PLAY_ICON"
+else
+    ICON="$PAUSE_ICON"
+fi
+
+# Format output
+if [[ -n "$ARTIST" ]]; then
+    MSG="$ICON $TITLE - $ARTIST"
+else
+    MSG="$ICON $TITLE"
+fi
+
+# Send notification
+spril "$MSG"

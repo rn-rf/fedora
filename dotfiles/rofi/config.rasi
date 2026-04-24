@@ -1,0 +1,43 @@
+* {
+    font: "JetBrainsMono Medium 9";
+    padding: 0px;
+}
+
+window {
+    location: northeast;
+    anchor: northeast;
+    width: 30%;
+    border: 0px;
+    border-radius: 12px;
+    background-color: #1d1f21;
+
+    x-offset: -9px;
+    y-offset: 6px;
+    children:   [ horibox ];
+}
+horibox {
+    orientation: horizontal;
+    children:   [ inputbar, listview ];
+}
+
+inputbar {
+    children: [ entry ];
+    expand: false;
+    width: 180px;
+}
+
+entry {
+    placeholder: "";
+    text-color: #ffffff;
+}
+
+listview {
+    lines: 5;
+    columns: 1;
+    spacing: 4px;
+}
+
+element {
+    padding: 2px 8px;
+    border-radius: 12px;
+}

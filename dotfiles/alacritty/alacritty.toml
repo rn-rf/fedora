@@ -1,0 +1,6 @@
+[colors.cursor]
+text = "#151515"
+cursor = "#ffffff"
+
+[window]
+opacity = 0.9
