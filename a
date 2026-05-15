@@ -1,0 +1,995 @@
+DSBDA Practical Guide (SPPU)
+
+Practical 1 – Data Wrangling I
+
+Objective
+
+Perform data cleaning and preprocessing using Python and Pandas.
+
+Concepts Used
+
+Pandas
+
+NumPy
+
+CSV handling
+
+Missing value handling
+
+Data cleaning
+
+
+Common Operations
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("data.csv")
+df.head()
+df.info()
+df.describe()
+df.isnull().sum()
+df.dropna()
+
+Viva Questions
+
+1. What is data wrangling?
+
+
+2. What is preprocessing?
+
+
+3. Difference between Pandas and NumPy?
+
+
+4. What are missing values?
+
+
+5. What is DataFrame?
+
+
+
+
+---
+
+Practical 2 – Data Wrangling II
+
+Objective
+
+Perform transformations and scaling on dataset.
+
+Concepts Used
+
+Normalization
+
+Standardization
+
+Encoding
+
+Outlier handling
+
+
+Common Operations
+
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
+Viva Questions
+
+1. What is normalization?
+
+
+2. Difference between normalization and standardization?
+
+
+3. What are outliers?
+
+
+4. Why scale data?
+
+
+
+
+---
+
+Practical 3 – Descriptive Statistics
+
+Objective
+
+Compute statistical measures on dataset.
+
+Concepts Used
+
+Mean
+
+Median
+
+Mode
+
+Variance
+
+Standard deviation
+
+
+Common Operations
+
+import statistics
+
+mean = df["Age"].mean()
+median = df["Age"].median()
+mode = df["Age"].mode()
+
+Viva Questions
+
+1. Difference between mean and median?
+
+
+2. What is variance?
+
+
+3. What is standard deviation?
+
+
+4. What is skewness?
+
+
+
+
+---
+
+Practical 4 – Data Visualization
+
+Objective
+
+Visualize data using graphs.
+
+Concepts Used
+
+Matplotlib
+
+Seaborn
+
+Histograms
+
+Scatter plots
+
+Box plots
+
+
+Common Operations
+
+import matplotlib.pyplot as plt
+
+plt.scatter(df["Age"], df["Salary"])
+plt.show()
+
+Viva Questions
+
+1. Why visualization is important?
+
+
+2. Difference between histogram and bar chart?
+
+
+3. What is boxplot?
+
+
+4. What is scatter plot?
+
+
+
+
+---
+
+Practical 5 – Linear Regression
+
+Objective
+
+Predict continuous values using linear regression.
+
+Concepts Used
+
+Supervised learning
+
+Regression
+
+Train-test split
+
+Prediction
+
+
+Common Operations
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+Viva Questions
+
+1. What is regression?
+
+
+2. Difference between classification and regression?
+
+
+3. What is dependent variable?
+
+
+4. What is overfitting?
+
+
+
+
+---
+
+Practical 6 – Logistic Regression
+
+Objective
+
+Perform classification using logistic regression.
+
+Concepts Used
+
+Binary classification
+
+Sigmoid function
+
+Accuracy
+
+
+Common Operations
+
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+
+Viva Questions
+
+1. What is classification?
+
+
+2. Difference between linear and logistic regression?
+
+
+3. What is sigmoid function?
+
+
+4. What is confusion matrix?
+
+
+
+
+---
+
+Practical 7 – Naive Bayes
+
+Objective
+
+Perform classification using probability.
+
+Concepts Used
+
+Bayes theorem
+
+Probability
+
+GaussianNB
+
+
+Common Operations
+
+from sklearn.naive_bayes import GaussianNB
+
+model = GaussianNB()
+
+Viva Questions
+
+1. What is Bayes theorem?
+
+
+2. Why called Naive Bayes?
+
+
+3. Advantages of Naive Bayes?
+
+
+4. Applications of Naive Bayes?
+
+
+
+
+---
+
+Practical 8 – Decision Tree
+
+Objective
+
+Classify data using decision tree.
+
+Concepts Used
+
+Entropy
+
+Information gain
+
+Tree structure
+
+
+Common Operations
+
+from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier()
+
+Viva Questions
+
+1. What is entropy?
+
+
+2. What is information gain?
+
+
+3. Advantages of decision tree?
+
+
+4. What is pruning?
+
+
+
+
+---
+
+Practical 9 – K-Means Clustering
+
+Objective
+
+Group similar data into clusters.
+
+Concepts Used
+
+Unsupervised learning
+
+Centroids
+
+Clustering
+
+
+Common Operations
+
+from sklearn.cluster import KMeans
+
+kmeans = KMeans(n_clusters=3)
+
+Viva Questions
+
+1. What is clustering?
+
+
+2. Difference between supervised and unsupervised learning?
+
+
+3. What is centroid?
+
+
+4. What is elbow method?
+
+
+
+
+---
+
+Practical 10 – Association Rule Mining
+
+Objective
+
+Find relationships between items.
+
+Concepts Used
+
+Apriori algorithm
+
+Support
+
+Confidence
+
+Lift
+
+
+Viva Questions
+
+1. What is association rule mining?
+
+
+2. What is support?
+
+
+3. What is confidence?
+
+
+4. Applications of Apriori?
+
+
+
+
+---
+
+Practical 11 – Hadoop MapReduce WordCount
+
+Objective
+
+Process large log/text files using Hadoop.
+
+Concepts Used
+
+HDFS
+
+Mapper
+
+Reducer
+
+Distributed computing
+
+
+Common Commands
+
+hdfs dfs -mkdir /input
+hdfs dfs -put file.txt /input
+hadoop jar wordcount.jar WordCount /input /output
+hdfs dfs -cat /output/part-r-00000
+
+Viva Questions
+
+1. What is Hadoop?
+
+
+2. What is HDFS?
+
+
+3. What is MapReduce?
+
+
+4. Difference between mapper and reducer?
+
+
+5. What is namenode?
+
+
+6. What is datanode?
+
+
+
+
+---
+
+Practical 12 – Spark
+
+Objective
+
+Perform big data processing using Spark.
+
+Concepts Used
+
+RDD
+
+SparkContext
+
+Distributed processing
+
+
+Common Commands
+
+pyspark
+
+rdd = sc.parallelize([1,2,3,4])
+rdd.collect()
+
+Viva Questions
+
+1. What is Apache Spark?
+
+
+2. Difference between Hadoop and Spark?
+
+
+3. What is RDD?
+
+
+4. Why Spark is faster?
+
+
+
+
+---
+
+Practical 13 – MongoDB
+
+Objective
+
+Perform NoSQL database operations.
+
+Concepts Used
+
+Collections
+
+Documents
+
+CRUD operations
+
+
+Common Commands
+
+use college
+
+db.student.insertOne({name:"Wade", age:21})
+db.student.find()
+
+Viva Questions
+
+1. What is NoSQL?
+
+
+2. Difference between SQL and NoSQL?
+
+
+3. What is document database?
+
+
+4. Advantages of MongoDB?
+
+
+
+
+---
+
+Most Important Commands for Exam
+
+Start Jupyter
+
+jupyter notebook
+
+Install Libraries
+
+pip install pandas numpy matplotlib scikit-learn
+
+Run Python File
+
+python3 file.py
+
+Start Hadoop
+
+start-all.sh
+
+Check Hadoop Services
+
+jps
+
+Start MongoDB
+
+mongosh
+
+
+---
+
+Common Viva Questions Asked in Any Practical
+
+1. What is Data Science?
+
+Data Science is the process of extracting useful insights and knowledge from data using statistics, machine learning, and visualization.
+
+2. What is Machine Learning?
+
+Machine Learning is a branch of AI where systems learn patterns from data and make predictions without explicit programming.
+
+3. Difference between AI, ML, and Data Science?
+
+AI	ML	Data Science
+
+Making machines intelligent	Learning from data	Extracting insights from data
+
+
+4. What is Dataset?
+
+A collection of related data arranged in rows and columns.
+
+5. What is Preprocessing?
+
+Cleaning and transforming raw data before analysis.
+
+6. What are Missing Values?
+
+Empty or null values present in dataset.
+
+7. What is Supervised Learning?
+
+Learning using labeled data. Example: Linear Regression.
+
+8. What is Unsupervised Learning?
+
+Learning without labeled data. Example: K-Means clustering.
+
+9. What is Overfitting?
+
+When model performs well on training data but poorly on new data.
+
+10. What is Accuracy?
+
+Percentage of correct predictions made by model.
+
+11. What is Train-Test Split?
+
+Dividing dataset into training and testing parts.
+
+12. Difference between CSV and Excel?
+
+CSV	Excel
+
+Plain text	Spreadsheet format
+Lightweight	Rich formatting
+
+
+13. What is Python Library?
+
+Collection of pre-written code/modules.
+
+14. Why use Pandas?
+
+For data analysis and handling tabular data.
+
+15. Why use NumPy?
+
+For numerical computations and arrays.
+
+
+---
+
+Detailed Viva Questions and Answers
+
+Practical 1 Viva Answers
+
+What is Data Wrangling?
+
+Process of cleaning and transforming raw data into useful format.
+
+Why is data cleaning necessary?
+
+To improve data quality and remove errors.
+
+What is DataFrame?
+
+A two-dimensional tabular structure in Pandas.
+
+What does head() do?
+
+Displays first 5 rows of dataset.
+
+What does describe() do?
+
+Provides statistical summary like mean, min, max.
+
+What is dropna()?
+
+Removes rows containing null values.
+
+What is fillna()?
+
+Fills missing values with specified values.
+
+
+---
+
+Practical 2 Viva Answers
+
+What is Normalization?
+
+Scaling values between 0 and 1.
+
+What is Standardization?
+
+Transforming data to mean 0 and standard deviation 1.
+
+Why scale data?
+
+To improve machine learning model performance.
+
+What are Outliers?
+
+Values significantly different from other values.
+
+
+---
+
+Practical 3 Viva Answers
+
+What is Mean?
+
+Average of all values.
+
+What is Median?
+
+Middle value after sorting.
+
+What is Mode?
+
+Most frequently occurring value.
+
+What is Standard Deviation?
+
+Measure of spread of data.
+
+What is Variance?
+
+Square of standard deviation.
+
+
+---
+
+Practical 4 Viva Answers
+
+Why Visualization is important?
+
+Helps understand patterns and trends.
+
+What is Histogram?
+
+Graph showing frequency distribution.
+
+What is Scatter Plot?
+
+Graph showing relationship between two variables.
+
+What is Boxplot?
+
+Graph used to detect outliers.
+
+
+---
+
+Practical 5 Viva Answers
+
+What is Regression?
+
+Technique used for predicting continuous values.
+
+Difference between Regression and Classification?
+
+Regression predicts continuous values while classification predicts categories.
+
+What is Linear Regression?
+
+Algorithm that finds linear relationship between variables.
+
+What is Dependent Variable?
+
+Variable being predicted.
+
+
+---
+
+Practical 6 Viva Answers
+
+What is Logistic Regression?
+
+Classification algorithm for binary outcomes.
+
+What is Sigmoid Function?
+
+Function converting values between 0 and 1.
+
+What is Confusion Matrix?
+
+Table showing prediction performance.
+
+
+---
+
+Practical 7 Viva Answers
+
+What is Naive Bayes?
+
+Probability-based classification algorithm.
+
+Why called Naive?
+
+Assumes all features are independent.
+
+Applications of Naive Bayes?
+
+Spam filtering and text classification.
+
+
+---
+
+Practical 8 Viva Answers
+
+What is Decision Tree?
+
+Tree-based classification algorithm.
+
+What is Entropy?
+
+Measure of impurity/disorder.
+
+What is Information Gain?
+
+Reduction in entropy.
+
+What is Pruning?
+
+Removing unnecessary branches from tree.
+
+
+---
+
+Practical 9 Viva Answers
+
+What is Clustering?
+
+Grouping similar data points.
+
+What is K-Means?
+
+Clustering algorithm using centroids.
+
+What is Centroid?
+
+Center point of cluster.
+
+What is Elbow Method?
+
+Method to find optimal K value.
+
+
+---
+
+Practical 10 Viva Answers
+
+What is Association Rule Mining?
+
+Finding relationships between items.
+
+What is Support?
+
+Frequency of item occurrence.
+
+What is Confidence?
+
+Probability that rule is correct.
+
+What is Lift?
+
+Measure of rule strength.
+
+
+---
+
+Practical 11 Viva Answers
+
+What is Hadoop?
+
+Framework for distributed storage and processing of big data.
+
+What is HDFS?
+
+Hadoop Distributed File System.
+
+What is MapReduce?
+
+Programming model for processing large datasets.
+
+What is Mapper?
+
+Processes input data into key-value pairs.
+
+What is Reducer?
+
+Aggregates mapper output.
+
+What is NameNode?
+
+Master node managing metadata.
+
+What is DataNode?
+
+Stores actual data blocks.
+
+Why Hadoop is used?
+
+To process very large datasets efficiently.
+
+
+---
+
+Practical 12 Viva Answers
+
+What is Apache Spark?
+
+Fast distributed processing framework.
+
+Difference between Hadoop and Spark?
+
+Spark processes data in memory, Hadoop mainly uses disk.
+
+What is RDD?
+
+Resilient Distributed Dataset.
+
+Why Spark is faster?
+
+Because of in-memory computation.
+
+
+---
+
+Practical 13 Viva Answers
+
+What is NoSQL?
+
+Non-relational database.
+
+Difference between SQL and NoSQL?
+
+SQL	NoSQL
+
+Relational	Non-relational
+Tables	Documents/collections
+
+
+What is MongoDB?
+
+Document-oriented NoSQL database.
+
+What is Collection?
+
+Group of documents in MongoDB.
+
+What is Document?
+
+JSON-like data record.
+
+
+---
+
+Practical Exam Tips
+
+1. First import libraries.
+
+
+2. Run notebook cell by cell.
+
+
+3. Read errors carefully.
+
+
+4. Keep dataset in same folder.
+
+
+5. Explain workflow confidently.
+
+
+6. Even if output is wrong, explain logic.
+
+
+7. Always know objective of practical.
+
+
+
+
+---
+
+Typical DSBDA Workflow
+
+Import Libraries
+↓
+Load Dataset
+↓
+Preprocess Data
+↓
+Visualize Data
+↓
+Train Model
+↓
+Predict
+↓
+Evaluate Result
